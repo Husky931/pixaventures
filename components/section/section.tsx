@@ -1,11 +1,13 @@
+'use client'
+
 import {
-  chakra,
-  useStyleConfig,
-  omitThemingProps,
   Container,
-  ThemingProps,
-  StyleProps,
   HTMLChakraProps,
+  StyleProps,
+  ThemingProps,
+  chakra,
+  omitThemingProps,
+  useStyleConfig,
 } from '@chakra-ui/react'
 
 export interface SectionProps

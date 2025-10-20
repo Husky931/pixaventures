@@ -1,4 +1,6 @@
-import { Box, useTheme, useColorModeValue } from '@chakra-ui/react'
+'use client'
+
+import { Box, useColorModeValue, useTheme } from '@chakra-ui/react'
 
 export const BackgroundGradient = ({ hideOverlay, ...props }: any) => {
   const theme = useTheme()
@@ -14,7 +16,7 @@ export const BackgroundGradient = ({ hideOverlay, ...props }: any) => {
 
   let gradientOverlay = `linear-gradient(0deg, var(--chakra-colors-${useColorModeValue(
     'white',
-    'gray-900'
+    'gray-900',
   )}) 60%, rgba(0, 0, 0, 0) 100%);`
 
   return (
