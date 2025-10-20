@@ -5,26 +5,20 @@ const faq = {
   // description: '',
   items: [
     {
-      q: 'How many products can I use Saas UI Pro for?',
-      a: (
-        <>
-          The single license can be used for one commercial application or SaaS
-          product and unlimited internal tools. You can buy as many licenses as
-          you need. <br /> The unlimited license does not have any restrictions.
-        </>
-      ),
+      q: 'How does pricing work for new brand launches?',
+      a: 'Each engagement covers the full setup of your eCommerce stack — brand, storefront, payments, logistics, and growth systems. <br /> You pay once per project and own the entire infrastructure.',
     },
     {
-      q: 'Can I use Saas UI Pro for client work?',
-      a: "Yes, that's totally up to you, as long as it fits the license you purchase.",
+      q: 'Do you work with existing businesses?',
+      a: 'Absolutely. We help optimize or rebuild existing stores using our headless framework, integrating modern payments, subscriptions, and analytics.',
     },
     {
-      q: 'Can I use Saas UI Pro for Open Source projects?',
-      a: 'No currently not. A large part of Saas UI is already released under MIT license. We try to give back to the community as much as possible.',
+      q: 'Can you handle compliance and logistics setup too?',
+      a: 'Yes. Beyond tech, we assist with shipping providers, cross-border tax (IOSS/VAT), and payment compliance so your brand can scale internationally from day one.',
     },
     {
-      q: 'Does Saas UI include Figma, Sketch or other design files?',
-      a: 'No, Saas UI does not include any design assets. Maintaining design resources costs a lot of extra effort. We believe small teams can move much faster by designing directly in code, with help of Storybooks.',
+      q: 'Can Pixaventures build multiple brands for me?',
+      a: 'Yes. We can operate as your long-term technical and creative partner. Each additional brand is treated as a new launch with its own deliverables and pricing scope.',
     },
   ],
 }

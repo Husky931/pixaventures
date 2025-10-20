@@ -3,7 +3,7 @@ import { HStack, Text } from '@chakra-ui/react'
 export default {
   title: 'Pricing for every stage',
   description:
-    'Pay once and get life-time access to our high quality components.',
+    'We build companies, not websites. Work with us once — keep the system forever.',
   plans: [
     {
       id: 'oss',

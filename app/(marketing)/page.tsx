@@ -5,37 +5,28 @@ import {
   ButtonGroup,
   Container,
   Flex,
-  HStack,
   Heading,
   Icon,
-  IconButton,
   Stack,
   Tag,
   Text,
-  VStack,
   Wrap,
   useClipboard,
 } from '@chakra-ui/react'
-import { Br, Link } from '@saas-ui/react'
+import { Br } from '@saas-ui/react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import {
   FiArrowRight,
+  FiBarChart2,
   FiBox,
-  FiCheck,
-  FiCode,
-  FiCopy,
-  FiFlag,
-  FiGrid,
-  FiLock,
-  FiSearch,
-  FiSliders,
-  FiSmile,
-  FiTerminal,
-  FiThumbsUp,
-  FiToggleLeft,
+  FiCheckCircle,
+  FiCpu,
+  FiFileText,
+  FiGlobe,
+  FiMap,
   FiTrendingUp,
-  FiUserPlus,
+  FiZap,
 } from 'react-icons/fi'
 
 import * as React from 'react'
@@ -50,7 +41,6 @@ import {
   HighlightsItem,
   HighlightsTestimonialItem,
 } from '#components/highlights'
-import { ChakraLogo, NextjsLogo } from '#components/logos'
 import { FallInPlace } from '#components/motion/fall-in-place'
 import { Pricing } from '#components/pricing/pricing'
 import { Testimonial, Testimonials } from '#components/testimonials'
@@ -64,11 +54,11 @@ const Home: NextPage = () => {
     <Box>
       <HeroSection />
 
-      <HighlightsSection />
-
       <FeaturesSection />
 
-      <TestimonialsSection />
+      <HighlightsSection />
+
+      {/* <TestimonialsSection /> */}
 
       <PricingSection />
 
@@ -89,30 +79,48 @@ const HeroSection: React.FC = () => {
             px="0"
             title={
               <FallInPlace>
-                Build beautiful
-                <Br /> software faster
+                Launching online
+                <Br /> brands that work
               </FallInPlace>
             }
             description={
               <FallInPlace delay={0.4} fontWeight="medium">
-                Saas UI is a <Em>React component library</Em>
-                <Br /> that doesn&apos;t get in your way and helps you <Br />{' '}
-                build intuitive SaaS products with speed.
+                Pixaventures builds, launches and operates
+                <Br /> digital eCommerce brands starting with <Br />
+                <Flex align="center" flexWrap="wrap" gap="2">
+                  our flagship brand{' '}
+                  <a
+                    href="https://www.luckypandatreats.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                    }}
+                  >
+                    <Em>Lucky Panda Treats</Em>
+                    <Image
+                      src="/flagship_logo.png"
+                      alt="Flagship logo"
+                      width={200}
+                      height={32}
+                      style={{ height: '32px', width: 'auto' }}
+                      priority
+                    />
+                  </a>
+                </Flex>
               </FallInPlace>
             }
           >
             <FallInPlace delay={0.8}>
-              <HStack pt="4" pb="12" spacing="8">
-                <NextjsLogo height="28px" /> <ChakraLogo height="20px" />
-              </HStack>
-
-              <ButtonGroup spacing={4} alignItems="center">
-                <ButtonLink colorScheme="primary" size="lg" href="/signup">
+              <ButtonGroup spacing={4} marginTop={8} alignItems="center">
+                {/* <ButtonLink colorScheme="primary" size="lg" href="/signup">
                   Sign Up
-                </ButtonLink>
+                </ButtonLink> */}
                 <ButtonLink
                   size="lg"
-                  href="https://demo.saas-ui.dev"
+                  href="https://www.luckypandatreats.com/"
                   variant="outline"
                   rightIcon={
                     <Icon
@@ -127,7 +135,7 @@ const HeroSection: React.FC = () => {
                     />
                   }
                 >
-                  View demo
+                  View flagship project
                 </ButtonLink>
               </ButtonGroup>
             </FallInPlace>
@@ -144,7 +152,7 @@ const HeroSection: React.FC = () => {
             <FallInPlace delay={1}>
               <Box overflow="hidden" height="100%">
                 <Image
-                  src="/static/screenshots/list.png"
+                  src="/bg_1_pair.webp"
                   width={1200}
                   height={762}
                   alt="Screenshot of a ListPage in Saas UI Pro"
@@ -157,12 +165,13 @@ const HeroSection: React.FC = () => {
         </Stack>
       </Container>
 
-      <Features
+      {/* <Features
         id="benefits"
         columns={[1, 2, 4]}
         iconSize={4}
         innerWidth="container.xl"
         pt="20"
+        mt={40}
         features={[
           {
             title: 'Accessible',
@@ -197,7 +206,7 @@ const HeroSection: React.FC = () => {
           },
         ]}
         reveal={FallInPlace}
-      />
+      /> */}
     </Box>
   )
 }
@@ -207,7 +216,7 @@ const HighlightsSection = () => {
 
   return (
     <Highlights>
-      <HighlightsItem colSpan={[1, null, 2]} title="Core components">
+      {/* <HighlightsItem colSpan={[1, null, 2]} title="Core components">
         <VStack alignItems="flex-start" spacing="8">
           <Text color="muted" fontSize="xl">
             Get started for free with <Em>30+ open source components</Em>.
@@ -253,44 +262,48 @@ const HighlightsSection = () => {
           selected the most productive and established tools in the scene and
           build Saas UI on top of it.
         </Text>
-      </HighlightsItem>
+      </HighlightsItem> */}
       <HighlightsTestimonialItem
-        name="Renata Alink"
+        name="Pecev Gligor"
         description="Founder"
-        avatar="/static/images/avatar.jpg"
+        avatar="/founder_2.webp"
         gradient={['pink.200', 'purple.500']}
       >
-        “Saas UI helped us set up a beautiful modern UI in no time. It saved us
-        hundreds of hours in development time and allowed us to focus on
-        business logic for our specific use-case from the start.”
+        Serial entrepreneur with a background in IT, 3D design, and cross-border
+        business.
+        <Br />
+        I’ve lived and built projects across the U.S., Europe, and China —
+        learning firsthand how to bridge technology, culture, and commerce.
+        <Br />
+        Pixaventures is where that experience becomes a system for launching
+        real online brands.
       </HighlightsTestimonialItem>
       <HighlightsItem
         colSpan={[1, null, 2]}
-        title="Start your next idea two steps ahead"
+        title="Let’s turn your idea into a brand that sells."
       >
         <Text color="muted" fontSize="lg">
-          We took care of all your basic frontend needs, so you can start
-          building functionality that makes your product unique.
+          Tell us your vision — we’ll handle everything else. From product
+          concept and design to storefront, payments, logistics, and marketing,
+          Pixaventures manages the full cycle so your idea becomes a global
+          eCommerce business.
         </Text>
         <Wrap mt="8">
           {[
-            'authentication',
-            'navigation',
-            'crud',
-            'settings',
-            'multi-tenancy',
-            'layouts',
-            'billing',
-            'a11y testing',
-            'server-side rendering',
-            'documentation',
-            'onboarding',
-            'storybooks',
-            'theming',
-            'upselling',
-            'unit testing',
-            'feature flags',
-            'responsiveness',
+            'brand strategy',
+            'Next.js storefronts',
+            'Shopify integration',
+            'Stripe payments',
+            'subscriptions',
+            'AI integration',
+            'ERP solutions',
+            'UI/UX design',
+            'seo & content',
+            'email automation',
+            'creator marketing',
+            'growth optimization',
+            'A/B testing',
+            'multi-market setup',
           ].map((value) => (
             <Tag
               key={value}
@@ -320,15 +333,18 @@ const FeaturesSection = () => {
           as="p"
         >
           Not your standard
-          <Br /> dashboard template.
+          <Br /> launch partner.
         </Heading>
       }
       description={
         <>
-          Saas UI Pro includes everything you need to build modern frontends.
+          Pixaventures provides the systems to conceive, build, and operate
+          online brands.
           <Br />
-          Use it as a template for your next product or foundation for your
-          design system.
+          Our expertise goes beyond code. Pixaventures covers the entire
+          eCommerce lifecycle—from technology and design to logistics,
+          cross-border compliance, VAT regulations and brand growth. We build
+          real, operating businesses, not just websites.
         </>
       }
       align="left"
@@ -336,71 +352,66 @@ const FeaturesSection = () => {
       iconSize={4}
       features={[
         {
-          title: '#components.',
+          title: 'Full-stack execution.',
           icon: FiBox,
           description:
-            'All premium components are available on a private NPM registery, no more copy pasting and always up-to-date.',
+            'We handle every layer—product design, Shopify headless builds, payments, and fulfillment systems—ready for global scale.',
           variant: 'inline',
         },
         {
-          title: 'Starterkits.',
-          icon: FiLock,
+          title: 'Cross-border logistics.',
+          icon: FiGlobe,
           description:
             'Example apps in Next.JS, Electron. Including authentication, billing, example pages, everything you need to get started FAST.',
           variant: 'inline',
         },
         {
-          title: 'Documentation.',
-          icon: FiSearch,
+          title: 'Legal & compliance.',
+          icon: FiFileText,
           description:
-            'Extensively documented, including storybooks, best practices, use-cases and examples.',
+            'Support for entity formation, data protection, and payment regulation—keeping operations safe and audit-ready.',
           variant: 'inline',
         },
         {
-          title: 'Onboarding.',
-          icon: FiUserPlus,
+          title: 'Localization & markets.',
+          icon: FiMap,
           description:
-            'Add user onboarding flows, like tours, hints and inline documentation without breaking a sweat.',
+            'Multi-currency, multi-language storefronts tuned for local pricing, regional marketing, and customer retention.',
           variant: 'inline',
         },
         {
-          title: 'Feature flags.',
-          icon: FiFlag,
-          description:
-            "Implement feature toggles for your billing plans with easy to use hooks. Connect Flagsmith, or other remote config services once you're ready.",
-          variant: 'inline',
-        },
-        {
-          title: 'Upselling.',
+          title: 'Growth operations.',
           icon: FiTrendingUp,
           description:
-            '#components and hooks for upgrade flows designed to make upgrading inside your app frictionless.',
+            'Performance marketing, creator seeding, email/SMS funnels, and offer optimization built into the stack.',
           variant: 'inline',
         },
         {
-          title: 'Themes.',
-          icon: FiToggleLeft,
+          title: 'Data & insight.',
+          icon: FiBarChart2,
           description:
-            'Includes multiple themes with darkmode support, always have the perfect starting point for your next project.',
+            'Event tracking, attribution, and dashboards that turn marketing noise into actionable business data.',
           variant: 'inline',
         },
         {
-          title: 'Generators.',
-          icon: FiTerminal,
+          title: 'Automation.',
+          icon: FiZap,
           description:
-            'Extend your design system while maintaininig code quality and consistency with built-in generators.',
+            'Reduce manual work with integrated logistics, billing, and customer management automations.',
           variant: 'inline',
         },
         {
-          title: 'Monorepo.',
-          icon: FiCode,
-          description: (
-            <>
-              All code is available as packages in a high-performance{' '}
-              <Link href="https://turborepo.com">Turborepo</Link>, you have full
-              control to modify and adjust it to your workflow.
-            </>
-          ),
+          title: 'Scalable tech.',
+          icon: FiCpu,
+          description:
+            'Next.js, Shopify Storefront API, Stripe, and Appstle—all pre-integrated and production-tested.',
+          variant: 'inline',
+        },
+        {
+          title: 'Real-world experience.',
+          icon: FiCheckCircle,
+          description:
+            'We prove every system on our own brand, Lucky Panda Treats, before deploying it for partners.',
           variant: 'inline',
         },
       ]}

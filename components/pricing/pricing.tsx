@@ -38,12 +38,12 @@ export const Pricing: React.FC<PricingProps> = (props) => {
   const { children, plans, title, description, ...rest } = props
 
   return (
-    <Section id="pricing" pos="relative" {...rest}>
+    <Section id="pricing" pos="relative" {...rest} paddingBottom={0}>
       <BackgroundGradient height="100%" />
       <Box zIndex="2" pos="relative">
         <SectionTitle title={title} description={description}></SectionTitle>
 
-        <SimpleGrid columns={[1, null, 3]} spacing={4}>
+        {/* <SimpleGrid columns={[1, null, 3]} spacing={4}>
           {plans?.map((plan) => (
             <PricingBox
               key={plan.id}
@@ -76,9 +76,9 @@ export const Pricing: React.FC<PricingProps> = (props) => {
               </ButtonLink>
             </PricingBox>
           ))}
-        </SimpleGrid>
+        </SimpleGrid> */}
 
-        {children}
+        {/* {children} */}
       </Box>
     </Section>
   )
