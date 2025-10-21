@@ -1,11 +1,25 @@
 'use client'
 
-import { Box, Center, Stack, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Center,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  Stack,
+  Text,
+} from '@chakra-ui/react'
 import { Auth } from '@saas-ui/auth'
 import { Link } from '@saas-ui/react'
 import { NextPage } from 'next'
 import NextLink from 'next/link'
 import { FaGithub, FaGoogle } from 'react-icons/fa'
+
+import { useRef, useState } from 'react'
 
 import { Features } from '#components/features'
 import { BackgroundGradient } from '#components/gradients/background-gradient'
@@ -26,6 +40,27 @@ const providers = {
 }
 
 const Login: NextPage = () => {
+  const [showInviteMessage, setShowInviteMessage] = useState(false)
+  const authRef = useRef<any>(null)
+
+  const handleSignupSuccess = () => {
+    setShowInviteMessage(true)
+    // Try to hide any default success messages
+    if (authRef.current) {
+      // Look for success messages in the Auth component and hide them
+      const successElements = authRef.current.querySelectorAll(
+        '[data-testid*="success"], .chakra-alert, [role="alert"]',
+      )
+      successElements.forEach((element: any) => {
+        element.style.display = 'none'
+      })
+    }
+  }
+
+  const closeModal = () => {
+    setShowInviteMessage(false)
+  }
+
   return (
     <Section height="100vh" innerWidth="container.xl">
       <BackgroundGradient
@@ -73,27 +108,55 @@ const Login: NextPage = () => {
           </Box>
           <Center height="100%" flex="1">
             <Box width="container.sm" pt="8" px="8">
-              <Auth
-                view="signup"
-                title={siteConfig.signup.title}
-                providers={providers}
-                loginLink={<Link href="/login">Log in</Link>}
-              >
-                <Text color="muted" fontSize="sm">
-                  By signing up you agree to our{' '}
-                  <Link href={siteConfig.termsUrl} color="white">
-                    Terms of Service
-                  </Link>{' '}
-                  and{' '}
-                  <Link href={siteConfig.privacyUrl} color="white">
-                    Privacy Policy
-                  </Link>
-                </Text>
-              </Auth>
+              <Box ref={authRef}>
+                <Auth
+                  view="signup"
+                  title={siteConfig.signup.title}
+                  // providers={providers}
+                  loginLink={<Link href="/login">Log in</Link>}
+                  onSuccess={handleSignupSuccess}
+                  // Try to disable default success behavior
+                  // successMessage=""
+                  // showSuccessMessage={false}
+                >
+                  <Text color="muted" fontSize="sm">
+                    By signing up you agree to our{' '}
+                    <Link href={siteConfig.termsUrl} color="white">
+                      Terms of Service
+                    </Link>{' '}
+                    and{' '}
+                    <Link href={siteConfig.privacyUrl} color="white">
+                      Privacy Policy
+                    </Link>
+                  </Text>
+                </Auth>
+              </Box>
             </Box>
           </Center>
         </Stack>
       </PageTransition>
+
+      {/* Popup Modal */}
+      <Modal isOpen={showInviteMessage} onClose={closeModal} isCentered>
+        <ModalOverlay />
+        <ModalContent mx="4" maxW="md">
+          <ModalHeader textAlign="center">
+            <Text fontSize="lg" fontWeight="semibold">
+              Currently signups are invite only
+            </Text>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb="6" textAlign="center">
+            <Text color="gray.600" _dark={{ color: 'gray.300' }}>
+              Thank you for your interest. We'll be in touch when we're ready to
+              open signups to the public.
+            </Text>
+            <Button mt="4" colorScheme="blue" onClick={closeModal} width="full">
+              Got it
+            </Button>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Section>
   )
 }

@@ -342,7 +342,7 @@ const FeaturesSection = () => {
           online brands.
           <Br />
           Our expertise goes beyond code. Pixaventures covers the entire
-          eCommerce lifecycle—from technology and design to logistics,
+          eCommerce lifecycle — from technology and design to logistics,
           cross-border compliance, VAT regulations and brand growth. We build
           real, operating businesses, not just websites.
         </>

@@ -1,32 +1,32 @@
-import { Button } from '@chakra-ui/react'
-import { Link } from '@saas-ui/react'
 import { NextSeoProps } from 'next-seo'
 import { FaGithub, FaTwitter } from 'react-icons/fa'
 import { FiCheck } from 'react-icons/fi'
+
 import { Logo } from './logo'
 
 const siteConfig = {
   logo: Logo,
   seo: {
-    title: 'Saas UI',
-    description: 'The React component library for startups',
+    title: 'Pixaventures',
+    description:
+      'Pixaventures LLC builds and launches online eCommerce brands. Launch #1: Lucky Panda Treats.',
   } as NextSeoProps,
-  termsUrl: '#',
-  privacyUrl: '#',
+  termsUrl: '/terms',
+  privacyUrl: '/privacy',
   header: {
     links: [
-      {
-        id: 'features',
-        label: 'Features',
-      },
-      {
-        id: 'pricing',
-        label: 'Pricing',
-      },
-      {
-        id: 'faq',
-        label: 'FAQ',
-      },
+      // {
+      //   id: 'features',
+      //   label: 'Features',
+      // },
+      // {
+      //   id: 'pricing',
+      //   label: 'Pricing',
+      // },
+      // {
+      //   id: 'faq',
+      //   label: 'FAQ',
+      // },
       {
         label: 'Login',
         href: '/login',
@@ -36,55 +36,77 @@ const siteConfig = {
         href: '/signup',
         variant: 'primary',
       },
+      {
+        label: 'Flagship',
+        href: 'https://www.luckypandatreats.com/',
+        variant: 'outline',
+      },
     ],
+  },
+  legal: {
+    companyName: 'Pixaventures LLC',
+    registeredAgent:
+      'Northwest Registered Agent Service Inc, 30 N Gould St Ste N, Sheridan, WY 82801, USA',
+    principalOffice:
+      'Vanco Prke 63/6, Stip, Macedonia, Former Yugoslav Republic Of',
+    contactEmail: 'customer@pixaventures.com',
+    flagship: {
+      label: 'Flagship: Lucky Panda Treats',
+      href: 'https://luckypandatreats.com',
+    },
   },
   footer: {
     copyright: (
       <>
-        Built by{' '}
-        <Link href="https://twitter.com/Pagebakers">Eelco Wiersma</Link>
+        © {new Date().getFullYear()} {`Pixaventures LLC`}
       </>
     ),
-    links: [
-      {
-        href: 'mailto:hello@saas-ui.dev',
-        label: 'Contact',
+    contact: {
+      email: 'customer@pixaventures.com',
+      hours: 'Monday - Friday 9 a.m. - 5 p.m. EST',
+      address: {
+        street: '30 N Gould St Ste N',
+        city: 'Sheridan',
+        state: 'WY',
+        zip: '82801',
+        country: 'USA',
       },
-      {
-        href: 'https://twitter.com/saas_js',
-        label: <FaTwitter size="14" />,
-      },
-      {
-        href: 'https://github.com/saas-js/saas-ui',
-        label: <FaGithub size="14" />,
-      },
+    },
+    resources: [
+      { href: 'mailto:customer@pixaventures.com', label: 'Contact' },
+      { href: '/privacy', label: 'Privacy' },
+      { href: '/terms', label: 'Terms' },
+      { href: 'https://luckypandatreats.com', label: 'Flagship' },
+    ],
+    paymentMethods: [
+      { name: 'Visa', component: 'Visa' },
+      { name: 'Mastercard', component: 'MasterCard' },
+      { name: 'American Express', component: 'AmericanExpress' },
+      { name: 'Apple Pay', component: 'ApplePay' },
     ],
   },
   signup: {
-    title: 'Start building with Saas UI',
+    title: 'Start building with Pixaventures',
     features: [
       {
         icon: FiCheck,
-        title: 'Accessible',
-        description: 'All components strictly follow WAI-ARIA standards.',
+        title: 'Headless',
+        description: 'Next.js + Shopify + Stripe',
       },
       {
         icon: FiCheck,
-        title: 'Themable',
-        description:
-          'Fully customize all components to your brand with theme support and style props.',
+        title: 'Subscriptions',
+        description: 'Appstle + lifecycle flows',
       },
       {
         icon: FiCheck,
-        title: 'Composable',
-        description:
-          'Compose components to fit your needs and mix them together to create new ones.',
+        title: 'Analytics',
+        description: 'Events, dashboards, QA',
       },
       {
         icon: FiCheck,
-        title: 'Productive',
-        description:
-          'Designed to reduce boilerplate and fully typed, build your product at speed.',
+        title: 'Global',
+        description: 'Multi-market & compliance',
       },
     ],
   },
