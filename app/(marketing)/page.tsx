@@ -2,22 +2,17 @@
 
 import {
   Box,
-  ButtonGroup,
   Container,
-  Flex,
   Heading,
-  Icon,
   Stack,
   Tag,
   Text,
   Wrap,
-  useClipboard,
 } from '@chakra-ui/react'
 import { Br } from '@saas-ui/react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import {
-  FiArrowRight,
   FiBarChart2,
   FiBox,
   FiCheckCircle,
@@ -36,15 +31,10 @@ import { Faq } from '#components/faq'
 import { Features } from '#components/features'
 import { BackgroundGradient } from '#components/gradients/background-gradient'
 import { Hero } from '#components/hero'
-import {
-  Highlights,
-  HighlightsItem,
-  HighlightsTestimonialItem,
-} from '#components/highlights'
+import { Highlights, HighlightsItem } from '#components/highlights'
 import { FallInPlace } from '#components/motion/fall-in-place'
 import { Pricing } from '#components/pricing/pricing'
 import { Testimonial, Testimonials } from '#components/testimonials'
-import { Em } from '#components/typography'
 import faq from '#data/faq'
 import pricing from '#data/pricing'
 import testimonials from '#data/testimonials'
@@ -54,6 +44,7 @@ const Home: NextPage = () => {
     <Box>
       <HeroSection />
       <HighlightsSection />
+      <ShanghaiImageSection />
       <FeaturesSection />
 
       {/* <TestimonialsSection /> */}
@@ -147,7 +138,7 @@ const HighlightsSection = () => {
     <Highlights>
       <HighlightsItem
         colSpan={[1, null, 2]}
-        title="Turn your idea into a brand that sells."
+        title="Turn your IDEA into a BRAND that sells."
         display="flex"
         flexDirection="column"
         alignItems="center"
@@ -191,6 +182,26 @@ const HighlightsSection = () => {
   )
 }
 
+const ShanghaiImageSection = () => {
+  return (
+    <Box w="100%" my={20}>
+      <Box
+        position="relative"
+        w="100%"
+        h={{ base: '340px', md: '520px', lg: '700px' }}
+      >
+        <Image
+          src="/shanghai.jpg"
+          alt="Shanghai skyline"
+          fill
+          style={{ objectFit: 'cover' }}
+          priority={false}
+        />
+      </Box>
+    </Box>
+  )
+}
+
 const FeaturesSection = () => {
   return (
     <Features
@@ -199,11 +210,12 @@ const FeaturesSection = () => {
         <Heading
           lineHeight="short"
           fontSize={['2xl', null, '4xl']}
-          textAlign="left"
+          textAlign="center"
           as="p"
+          alignItems="center"
         >
-          Not your standard
-          <Br /> launch partner.
+          Full Service
+          <Br /> Launch Partner
         </Heading>
       }
       description={
@@ -211,13 +223,16 @@ const FeaturesSection = () => {
           Pixaventures provides the systems to conceive, build, and operate
           online brands.
           <Br />
-          Our expertise goes beyond code. Pixaventures covers the entire
-          eCommerce lifecycle — from technology and design to logistics,
-          cross-border compliance, VAT regulations and brand growth. We build
-          real, operating businesses, not just websites.
+          <Br />
+          Our expertise goes beyond code.
+          <Br />
+          <Br />
+          Pixaventures covers the entire eCommerce lifecycle — from technology
+          and design to logistics, cross-border compliance, VAT regulations and
+          brand growth. We build real, operating businesses, not just websites.
         </>
       }
-      align="left"
+      align="center"
       columns={[1, 2, 3]}
       iconSize={4}
       features={[
