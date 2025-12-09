@@ -52,12 +52,10 @@ const Home: NextPage = () => {
       <HighlightsSection />
       <ShanghaiImageSection />
       <FeaturesSection />
-
       {/* <TestimonialsSection /> */}
-
       <PricingSection />
-
       <FaqSection />
+      <ProductsShowcaseSection />
       <ContactSection />
     </Box>
   )
@@ -81,8 +79,8 @@ const HeroSection: React.FC = () => {
             }
             description={
               <FallInPlace delay={0.4} fontWeight="medium">
-                Pixaventures is a Shaghai based startup that builds, <Br />
-                launches and operates digital based businesses <Br />
+                Pixaventures is a Shaghai based startup that builds launches and
+                operates digital based businesses. <Br />
               </FallInPlace>
             }
           >
@@ -308,6 +306,69 @@ const FeaturesSection = () => {
         },
       ]}
     />
+  )
+}
+
+const ProductsShowcaseSection = () => {
+  return (
+    <Box w="100%" py={20}>
+      <Container maxW="container.xl">
+        <Heading
+          textAlign="center"
+          fontSize={{ base: '2xl', md: '3xl' }}
+          mb={10}
+        >
+          Check out our products
+        </Heading>
+
+        <Stack
+          direction={{ base: 'column', md: 'row' }}
+          spacing={8}
+          align="center"
+          justify="center"
+        >
+          {/* Lucky Panda */}
+          <Box
+            as="a"
+            href="https://www.luckypandatreats.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            position="relative"
+            w={{ base: '100%', md: '50%' }}
+            h={{ base: '200px', md: '300px' }}
+            borderRadius="lg"
+            overflow="hidden"
+          >
+            <Image
+              src="/lucky-panda.png"
+              alt="Lucky Panda Treats"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </Box>
+
+          {/* VibeCheck */}
+          <Box
+            as="a"
+            href="https://www.vibecheck.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+            position="relative"
+            w={{ base: '100%', md: '50%' }}
+            h={{ base: '200px', md: '300px' }}
+            borderRadius="lg"
+            overflow="hidden"
+          >
+            <Image
+              src="/vibecheck.png"
+              alt="VibeCheck Coding"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
   )
 }
 
