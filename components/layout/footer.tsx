@@ -76,9 +76,6 @@ export const Footer: React.FC<FooterProps> = (props) => {
                   {footer.contact.address.city}
                 </Text>
                 <Text fontSize="sm" color="muted">
-                  {footer.contact.address.state} {footer.contact.address.zip}
-                </Text>
-                <Text fontSize="sm" color="muted">
                   {footer.contact.address.country}
                 </Text>
               </VStack>
