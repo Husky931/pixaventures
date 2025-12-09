@@ -200,7 +200,7 @@ const ShanghaiImageSection = () => {
         h={{ base: '340px', md: '520px', lg: '700px' }}
       >
         <Image
-          src="/shanghai.jpg"
+          src="/shanghai.webp"
           alt="Shanghai skyline"
           fill
           style={{ objectFit: 'cover' }}
@@ -344,7 +344,7 @@ const ProductsShowcaseSection = () => {
             overflow="hidden"
           >
             <Image
-              src="/lucky-panda.png"
+              src="/lucky-panda.webp"
               alt="Lucky Panda Treats"
               fill
               style={{ objectFit: 'cover' }}
