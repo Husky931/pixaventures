@@ -147,15 +147,18 @@ const HighlightsSection = () => {
     <Highlights>
       <HighlightsItem
         colSpan={[1, null, 2]}
-        title="Let’s turn your idea into a brand that sells."
+        title="Turn your idea into a brand that sells."
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
       >
-        <Text color="muted" fontSize="lg">
+        <Text color="muted" fontSize="lg" align="center">
           Tell us your vision — we’ll handle everything else. From product
           concept and design to storefront, payments, logistics, and marketing,
           Pixaventures manages the full cycle so your idea becomes a global
           eCommerce business.
         </Text>
-        <Wrap mt="8">
+        <Wrap mt="8" justify="center">
           {[
             'brand strategy',
             'Next.js storefronts',

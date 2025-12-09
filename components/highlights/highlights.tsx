@@ -14,8 +14,7 @@ import { Section, SectionProps } from '#components/section'
 import { Testimonial, TestimonialProps } from '#components/testimonials'
 
 export interface HighlightBoxProps
-  extends GridItemProps,
-    Omit<CardProps, 'title'> {}
+  extends GridItemProps, Omit<CardProps, 'title'> {}
 
 export const HighlightsItem: React.FC<HighlightBoxProps> = (props) => {
   const { children, title, ...rest } = props
@@ -105,9 +104,12 @@ export const Highlights: React.FC<SectionProps> = (props) => {
       {...rest}
     >
       <Grid
-        templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(3, 1fr)' }}
+        templateColumns={{ base: 'repeat(1, 1fr)', lg: 'repeat(1fr)' }}
         gap={8}
         position="relative"
+        justifyContent="center"
+        mx="auto"
+        maxW="900px"
       >
         {children}
       </Grid>
