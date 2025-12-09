@@ -3,7 +3,7 @@ import { ColorModeScript, theme } from '@chakra-ui/react'
 import { Provider } from './provider'
 
 export default function Layout(props: { children: React.ReactNode }) {
-  const colorMode = theme.config.initialColorMode
+  const colorMode = 'dark'
 
   return (
     <html lang="en" data-theme={colorMode} style={{ colorScheme: colorMode }}>
