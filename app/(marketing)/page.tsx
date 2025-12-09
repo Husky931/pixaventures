@@ -2,12 +2,18 @@
 
 import {
   Box,
+  Button,
   Container,
+  FormControl,
+  FormLabel,
   Heading,
+  Input,
   Stack,
   Tag,
   Text,
+  Textarea,
   Wrap,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import { Br } from '@saas-ui/react'
 import type { NextPage } from 'next'
@@ -52,6 +58,7 @@ const Home: NextPage = () => {
       <PricingSection />
 
       <FaqSection />
+      <ContactSection />
     </Box>
   )
 }
@@ -347,6 +354,83 @@ const PricingSection = () => {
 
 const FaqSection = () => {
   return <Faq {...faq} />
+}
+
+const ContactSection = () => {
+  const sectionBg = useColorModeValue('gray.50', 'gray.900')
+  const cardBg = useColorModeValue('white', 'gray.800')
+  const mutedText = useColorModeValue('muted', 'gray.300')
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    const fullName = formData.get('fullName')
+    const email = formData.get('email')
+    const subject = formData.get('subject')
+    const message = formData.get('message')
+
+    // Placeholder submit action; integrate with backend or email service later.
+    console.log({ fullName, email, subject, message })
+  }
+
+  return (
+    <Box bg={sectionBg} py={{ base: 16, md: 24 }} px={{ base: 4, md: 0 }}>
+      <Container maxW="container.md">
+        <Stack spacing={8}>
+          <Stack spacing={3} textAlign="center">
+            <Heading fontSize={['2xl', null, '3xl']}>Contact us</Heading>
+            <Text color={mutedText}>
+              Tell us about your project and we&apos;ll get back in the same
+              business day.
+            </Text>
+          </Stack>
+
+          <Box
+            as="form"
+            onSubmit={handleSubmit}
+            bg={cardBg}
+            boxShadow="md"
+            borderRadius="lg"
+            p={{ base: 6, md: 8 }}
+          >
+            <Stack spacing={6}>
+              <FormControl isRequired>
+                <FormLabel>Full name</FormLabel>
+                <Input name="fullName" placeholder="Jane Doe" />
+              </FormControl>
+
+              <FormControl isRequired>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                />
+              </FormControl>
+
+              <FormControl isRequired>
+                <FormLabel>Subject</FormLabel>
+                <Input name="subject" placeholder="How can we help?" />
+              </FormControl>
+
+              <FormControl isRequired>
+                <FormLabel>Message</FormLabel>
+                <Textarea
+                  name="message"
+                  placeholder="Share a few details about your goals and timeline."
+                  rows={5}
+                />
+              </FormControl>
+
+              <Button type="submit" colorScheme="purple" size="lg">
+                Send message
+              </Button>
+            </Stack>
+          </Box>
+        </Stack>
+      </Container>
+    </Box>
+  )
 }
 
 export default Home
