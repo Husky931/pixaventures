@@ -115,8 +115,15 @@ export function MobileNavContent(props: MobileNavContentProps) {
               </Flex>
               <Stack alignItems="stretch" spacing="0">
                 {siteConfig.header.links.map(({ href, label, ...props }, i) => {
+                  const isExternal = href?.startsWith('http')
                   return (
-                    <NavLink key={i} {...(props as any)}>
+                    <NavLink
+                      key={i}
+                      href={href}
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
+                      {...(props as any)}
+                    >
                       {label}
                     </NavLink>
                   )
