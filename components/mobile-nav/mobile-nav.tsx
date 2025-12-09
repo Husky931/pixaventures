@@ -31,6 +31,8 @@ interface NavLinkProps extends LinkProps {
 function NavLink({ href, children, isActive, ...rest }: NavLinkProps) {
   const pathname = usePathname()
   const bgActiveHoverColor = useColorModeValue('gray.100', 'whiteAlpha.100')
+  const textColor = useColorModeValue('black', 'white')
+  const borderColor = useColorModeValue('black', 'white')
 
   const [, group] = href?.split('/') || []
   isActive = isActive ?? pathname?.includes(group)
@@ -45,12 +47,24 @@ function NavLink({ href, children, isActive, ...rest }: NavLinkProps) {
       py="3"
       transition="0.2s all"
       fontWeight={isActive ? 'semibold' : 'medium'}
-      borderColor={isActive ? 'purple.400' : undefined}
-      borderBottomWidth="1px"
-      color={isActive ? 'white' : undefined}
+      borderBottomWidth="0"
+      borderColor={borderColor}
+      bg="transparent"
+      color={textColor}
       _hover={{
-        bg: isActive ? 'purple.500' : bgActiveHoverColor,
+        bg: bgActiveHoverColor,
+        textDecoration: 'none',
       }}
+      _focus={{
+        outline: 'none',
+        boxShadow: 'none',
+      }}
+      _focusVisible={{
+        outline: 'none',
+        boxShadow: 'none',
+      }}
+      _last={{ borderBottomWidth: 0 }}
+      textDecoration="none"
       {...rest}
     >
       {children}
