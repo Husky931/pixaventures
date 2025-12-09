@@ -126,9 +126,9 @@ export const Footer: React.FC<FooterProps> = (props) => {
           gap={2}
         >
           <Box>{siteConfig.footer.copyright}</Box>
-          <Text fontSize="xs" color="muted">
+          {/* <Text fontSize="xs" color="muted">
             Operating globally • U.S. entity jurisdiction
-          </Text>
+          </Text> */}
         </Flex>
       </Container>
     </Box>

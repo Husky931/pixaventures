@@ -6,7 +6,7 @@ const faq = {
   items: [
     {
       q: 'How does pricing work for new brand launches?',
-      a: 'Each engagement covers the full setup of your eCommerce stack — brand, storefront, payments, logistics, and growth systems. <br /> You pay once per project and own the entire infrastructure.',
+      a: 'Each engagement covers the full setup of your eCommerce stack — brand, storefront, payments, logistics, and growth systems. You pay once per project and own the entire infrastructure.',
     },
     {
       q: 'Do you work with existing businesses?',

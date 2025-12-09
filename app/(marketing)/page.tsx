@@ -53,10 +53,8 @@ const Home: NextPage = () => {
   return (
     <Box>
       <HeroSection />
-
-      <FeaturesSection />
-
       <HighlightsSection />
+      <FeaturesSection />
 
       {/* <TestimonialsSection /> */}
 
@@ -79,65 +77,41 @@ const HeroSection: React.FC = () => {
             px="0"
             title={
               <FallInPlace>
-                Launching online
-                <Br /> brands that work
+                Lets Build
+                <Br /> Your Startup
               </FallInPlace>
             }
             description={
               <FallInPlace delay={0.4} fontWeight="medium">
-                Pixaventures builds, launches and operates
-                <Br /> digital eCommerce brands starting with <Br />
-                <Flex align="center" flexWrap="wrap" gap="2">
-                  our flagship brand{' '}
-                  <a
-                    href="https://www.luckypandatreats.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                    }}
-                  >
-                    <Em>Lucky Panda Treats</Em>
-                    <Image
-                      src="/flagship_logo.png"
-                      alt="Flagship logo"
-                      width={200}
-                      height={32}
-                      style={{ height: '32px', width: 'auto' }}
-                      priority
-                    />
-                  </a>
-                </Flex>
+                Pixaventures is a Shaghai based startup that builds, <Br />
+                launches and operates digital based businesses <Br />
               </FallInPlace>
             }
           >
             <FallInPlace delay={0.8}>
-              <ButtonGroup spacing={4} marginTop={8} alignItems="center">
-                {/* <ButtonLink colorScheme="primary" size="lg" href="/signup">
-                  Sign Up
-                </ButtonLink> */}
+              <Stack
+                // spacing={4}
+                marginTop={8}
+                alignItems="flex-start"
+                display="flex"
+                flexDirection="column"
+                gap={4}
+              >
                 <ButtonLink
                   size="lg"
                   href="https://www.luckypandatreats.com/"
                   variant="outline"
-                  rightIcon={
-                    <Icon
-                      as={FiArrowRight}
-                      sx={{
-                        transitionProperty: 'common',
-                        transitionDuration: 'normal',
-                        '.chakra-button:hover &': {
-                          transform: 'translate(5px)',
-                        },
-                      }}
-                    />
-                  }
                 >
-                  View flagship project
+                  Flagship project -&gt; Lucky Panda
                 </ButtonLink>
-              </ButtonGroup>
+                <ButtonLink
+                  size="lg"
+                  href="https://www.luckypandatreats.com/"
+                  variant="outline"
+                >
+                  Flagship project -&gt; VibeCheck Coding
+                </ButtonLink>
+              </Stack>
             </FallInPlace>
           </Hero>
           <Box
@@ -152,7 +126,7 @@ const HeroSection: React.FC = () => {
             <FallInPlace delay={1}>
               <Box overflow="hidden" height="100%">
                 <Image
-                  src="/bg_1_pair.webp"
+                  src="/static/screenshots/list.png"
                   width={1200}
                   height={762}
                   alt="Screenshot of a ListPage in Saas UI Pro"
@@ -164,120 +138,13 @@ const HeroSection: React.FC = () => {
           </Box>
         </Stack>
       </Container>
-
-      {/* <Features
-        id="benefits"
-        columns={[1, 2, 4]}
-        iconSize={4}
-        innerWidth="container.xl"
-        pt="20"
-        mt={40}
-        features={[
-          {
-            title: 'Accessible',
-            icon: FiSmile,
-            description: 'All components strictly follow WAI-ARIA standards.',
-            iconPosition: 'left',
-            delay: 0.6,
-          },
-          {
-            title: 'Themable',
-            icon: FiSliders,
-            description:
-              'Fully customize all components to your brand with theme support and style props.',
-            iconPosition: 'left',
-            delay: 0.8,
-          },
-          {
-            title: 'Composable',
-            icon: FiGrid,
-            description:
-              'Compose components to fit your needs and mix them together to create new ones.',
-            iconPosition: 'left',
-            delay: 1,
-          },
-          {
-            title: 'Productive',
-            icon: FiThumbsUp,
-            description:
-              'Designed to reduce boilerplate and fully typed, build your product at speed.',
-            iconPosition: 'left',
-            delay: 1.1,
-          },
-        ]}
-        reveal={FallInPlace}
-      /> */}
     </Box>
   )
 }
 
 const HighlightsSection = () => {
-  const { value, onCopy, hasCopied } = useClipboard('yarn add @saas-ui/react')
-
   return (
     <Highlights>
-      {/* <HighlightsItem colSpan={[1, null, 2]} title="Core components">
-        <VStack alignItems="flex-start" spacing="8">
-          <Text color="muted" fontSize="xl">
-            Get started for free with <Em>30+ open source components</Em>.
-            Including authentication screens with Clerk, Supabase and Magic.
-            Fully functional forms with React Hook Form. Data tables with React
-            Table.
-          </Text>
-
-          <Flex
-            rounded="full"
-            borderWidth="1px"
-            flexDirection="row"
-            alignItems="center"
-            py="1"
-            ps="8"
-            pe="2"
-            bg="primary.900"
-            _dark={{ bg: 'gray.900' }}
-          >
-            <Box>
-              <Text color="yellow.400" display="inline">
-                yarn add
-              </Text>{' '}
-              <Text color="cyan.300" display="inline">
-                @saas-ui/react
-              </Text>
-            </Box>
-            <IconButton
-              icon={hasCopied ? <FiCheck /> : <FiCopy />}
-              aria-label="Copy install command"
-              onClick={onCopy}
-              variant="ghost"
-              ms="4"
-              isRound
-              color="white"
-            />
-          </Flex>
-        </VStack>
-      </HighlightsItem>
-      <HighlightsItem title="Solid foundations">
-        <Text color="muted" fontSize="lg">
-          We don&apos;t like to re-invent the wheel, neither should you. We
-          selected the most productive and established tools in the scene and
-          build Saas UI on top of it.
-        </Text>
-      </HighlightsItem> */}
-      <HighlightsTestimonialItem
-        name="Pecev Gligor"
-        description="Founder"
-        avatar="/founder_2.webp"
-        gradient={['pink.200', 'purple.500']}
-      >
-        Serial entrepreneur with a background in IT, 3D design, and cross-border
-        business.
-        <Br />
-        I’ve lived and built projects across the U.S., Europe, and China —
-        learning firsthand how to bridge technology, culture, and commerce.
-        <Br />
-        Pixaventures is where that experience becomes a system for launching
-        real online brands.
-      </HighlightsTestimonialItem>
       <HighlightsItem
         colSpan={[1, null, 2]}
         title="Let’s turn your idea into a brand that sells."

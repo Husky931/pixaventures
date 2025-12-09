@@ -27,17 +27,22 @@ const siteConfig = {
       //   id: 'faq',
       //   label: 'FAQ',
       // },
+      // {
+      //   label: 'Login',
+      //   href: '/login',
+      // },
+      // {
+      //   label: 'Sign Up',
+      //   href: '/signup',
+      //   variant: 'primary',
+      // },
       {
-        label: 'Login',
-        href: '/login',
+        label: 'Vibe Check',
+        href: 'https://www.vibecheck.site/',
+        variant: 'outline',
       },
       {
-        label: 'Sign Up',
-        href: '/signup',
-        variant: 'primary',
-      },
-      {
-        label: 'Flagship',
+        label: 'Lucky Panda',
         href: 'https://www.luckypandatreats.com/',
         variant: 'outline',
       },
