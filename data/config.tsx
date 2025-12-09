@@ -70,11 +70,10 @@ const siteConfig = {
       email: 'customer@pixaventures.com',
       hours: 'Monday - Friday 9 a.m. - 5 p.m. EST',
       address: {
-        street: '30 N Gould St Ste N',
-        city: 'Sheridan',
-        state: 'WY',
-        zip: '82801',
-        country: 'USA',
+        street: '333 Shimen Road',
+        city: 'Shanghai',
+        zip: '200041',
+        country: 'China',
       },
     },
     resources: [
