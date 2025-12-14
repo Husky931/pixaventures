@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Box,
   Button,
@@ -12,18 +14,51 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 
+import * as React from 'react'
+
 const ContactSection = () => {
   const sectionBg = useColorModeValue('gray.50', 'gray.900')
   const cardBg = useColorModeValue('white', 'gray.800')
-  const mutedText = useColorModeValue('muted', 'gray.300')
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>(
+    'idle',
+  )
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
+    event,
+  ) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    const fullName = formData.get('fullName')
-    const email = formData.get('email')
-    const subject = formData.get('subject')
-    const message = formData.get('message')
+    setIsSubmitting(true)
+    setStatus('idle')
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    const payload = {
+      fullName: String(formData.get('fullName') || ''),
+      email: String(formData.get('email') || ''),
+      subject: String(formData.get('subject') || ''),
+      message: String(formData.get('message') || ''),
+    }
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      if (!res.ok) throw new Error('Submission failed')
+
+      setStatus('success')
+      form.reset()
+    } catch (e) {
+      console.error(e)
+      setStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -67,9 +102,23 @@ const ContactSection = () => {
                 <Textarea name="message" rows={5} />
               </FormControl>
 
-              <Button type="submit" colorScheme="purple" size="lg">
+              <Button
+                type="submit"
+                colorScheme="purple"
+                size="lg"
+                isLoading={isSubmitting}
+              >
                 Send message
               </Button>
+
+              {status === 'success' && (
+                <Text color="green.500">Message sent successfully.</Text>
+              )}
+              {status === 'error' && (
+                <Text color="red.500">
+                  Error sending message. Please try again.
+                </Text>
+              )}
             </Stack>
           </Box>
         </Stack>
