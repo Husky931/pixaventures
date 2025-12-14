@@ -461,30 +461,22 @@ const ContactSection = () => {
             <Stack spacing={6}>
               <FormControl isRequired>
                 <FormLabel>Full name</FormLabel>
-                <Input name="fullName" placeholder="Jane Doe" />
+                <Input name="fullName" />
               </FormControl>
 
               <FormControl isRequired>
                 <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="you@example.com"
-                />
+                <Input type="email" name="email" />
               </FormControl>
 
               <FormControl isRequired>
                 <FormLabel>Subject</FormLabel>
-                <Input name="subject" placeholder="How can we help?" />
+                <Input name="subject" />
               </FormControl>
 
               <FormControl isRequired>
                 <FormLabel>Message</FormLabel>
-                <Textarea
-                  name="message"
-                  placeholder="Share a few details about your goals and timeline."
-                  rows={5}
-                />
+                <Textarea name="message" rows={5} />
               </FormControl>
 
               <Button type="submit" colorScheme="purple" size="lg">
