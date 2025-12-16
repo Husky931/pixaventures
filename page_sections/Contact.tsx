@@ -24,6 +24,7 @@ const ContactSection = () => {
   const [status, setStatus] = React.useState<'idle' | 'success' | 'error'>(
     'idle',
   )
+  const [errorMessage, setErrorMessage] = React.useState<string>('')
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
     event,
@@ -31,6 +32,7 @@ const ContactSection = () => {
     event.preventDefault()
     setIsSubmitting(true)
     setStatus('idle')
+    setErrorMessage('')
 
     const form = event.currentTarget
     const formData = new FormData(form)
@@ -49,13 +51,24 @@ const ContactSection = () => {
         body: JSON.stringify(payload),
       })
 
-      if (!res.ok) throw new Error('Submission failed')
+      const data = await res.json()
+
+      if (!res.ok) {
+        // Use the error message from the API if available
+        throw new Error(data.message || 'Submission failed')
+      }
 
       setStatus('success')
       form.reset()
     } catch (e) {
-      console.error(e)
+      console.error('Contact form error:', e)
       setStatus('error')
+      // Store error message for display
+      if (e instanceof Error && e.message) {
+        setErrorMessage(e.message)
+      } else {
+        setErrorMessage('Error sending message. Please try again.')
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -116,7 +129,7 @@ const ContactSection = () => {
               )}
               {status === 'error' && (
                 <Text color="red.500">
-                  Error sending message. Please try again.
+                  {errorMessage || 'Error sending message. Please try again.'}
                 </Text>
               )}
             </Stack>

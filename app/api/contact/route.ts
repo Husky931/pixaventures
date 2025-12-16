@@ -7,6 +7,37 @@ export const runtime = 'nodejs' // important for nodemailer in Next.js
 
 export async function POST(request: Request) {
   try {
+    // Validate environment variables
+    if (!process.env.ZOHO_EMAIL) {
+      console.error('ZOHO_EMAIL environment variable is not set')
+      return NextResponse.json(
+        {
+          message: 'Email service configuration error. Please contact support.',
+        },
+        { status: 500 },
+      )
+    }
+
+    if (!process.env.ZOHO_PASSWORD) {
+      console.error('ZOHO_PASSWORD environment variable is not set')
+      return NextResponse.json(
+        {
+          message: 'Email service configuration error. Please contact support.',
+        },
+        { status: 500 },
+      )
+    }
+
+    if (!process.env.CONTACT_FORM_RECIPIENT) {
+      console.error('CONTACT_FORM_RECIPIENT environment variable is not set')
+      return NextResponse.json(
+        {
+          message: 'Email service configuration error. Please contact support.',
+        },
+        { status: 500 },
+      )
+    }
+
     const headersList = await headers()
     const ip =
       headersList.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1'
@@ -15,7 +46,7 @@ export async function POST(request: Request) {
       await limiter.check(ip, 3) // 3 requests per minute
     } catch (error) {
       return NextResponse.json(
-        { message: `${error}: Too many requests. Please try again later.` },
+        { message: 'Too many requests. Please try again later.' },
         { status: 429 },
       )
     }
@@ -45,6 +76,17 @@ export async function POST(request: Request) {
         pass: process.env.ZOHO_PASSWORD,
       },
     })
+
+    // Verify transporter connection before sending
+    try {
+      await transporter.verify()
+    } catch (verifyError) {
+      console.error('SMTP connection verification failed:', verifyError)
+      return NextResponse.json(
+        { message: 'Email service connection failed. Please try again later.' },
+        { status: 500 },
+      )
+    }
 
     await transporter.sendMail({
       from: `"Contact Form" <${process.env.ZOHO_EMAIL}>`,
@@ -78,7 +120,34 @@ ${message}
       { status: 200 },
     )
   } catch (error) {
-    console.error('Error sending email:', error)
+    console.error('Error in contact form API:', error)
+
+    // Provide more specific error messages
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+      })
+
+      // Check for common nodemailer errors
+      if (error.message.includes('Invalid login')) {
+        return NextResponse.json(
+          { message: 'Email authentication failed. Please contact support.' },
+          { status: 500 },
+        )
+      }
+
+      if (
+        error.message.includes('ECONNREFUSED') ||
+        error.message.includes('ETIMEDOUT')
+      ) {
+        return NextResponse.json(
+          { message: 'Email service unavailable. Please try again later.' },
+          { status: 500 },
+        )
+      }
+    }
+
     return NextResponse.json(
       { message: 'Failed to send message. Please try again later.' },
       { status: 500 },
