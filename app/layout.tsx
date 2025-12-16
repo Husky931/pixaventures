@@ -1,9 +1,12 @@
 import { ColorModeScript, theme } from '@chakra-ui/react'
 
+import GoogleAnalytics from '#components/GoogleAnalytics'
+
 import { Provider } from './provider'
 
 export default function Layout(props: { children: React.ReactNode }) {
   const colorMode = 'dark'
+  const gaTrackingId = process.env.GOOGLE_ANALYTICS_ID as string
 
   return (
     <html lang="en" data-theme={colorMode} style={{ colorScheme: colorMode }}>
@@ -28,6 +31,7 @@ export default function Layout(props: { children: React.ReactNode }) {
         <link rel="manifest" href="/static/favicons/manifest.json" />
       </head>
       <body className={`chakra-ui-${colorMode}`}>
+        <GoogleAnalytics gaTrackingId={gaTrackingId} />
         <ColorModeScript initialColorMode={colorMode} />
         <Provider>{props.children}</Provider>
       </body>
